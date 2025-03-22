@@ -39,7 +39,7 @@ do
         ;;
         unit|test)
             # (cd build && time make $FLAGS)
-            $root/build/unit_tests
+            ./build/unit_tests
 
             shift
         ;;

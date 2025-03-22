@@ -101,6 +101,10 @@ add_executable(tiny-app
     ${SRC_DIR}/main.cpp
 )
 
+add_executable(unit_tests
+    tests/main_unit.cpp
+)
+
 message(STATUS "Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
 # turn off optimization to speed compile times
@@ -129,7 +133,10 @@ function(setup_target_properties target)
 endfunction()
 
 # Use the function for each target
-foreach(target tiny-app)
+foreach(target tiny-app unit_tests)
     setup_target_properties(${target})
 endforeach()
 
+enable_testing()
+
+add_test(unit_tests COMMAND unit_tests)
