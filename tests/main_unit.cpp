@@ -7,6 +7,7 @@
 #include <app/tiny.hpp>
 #include <vendor/ansi_colors.hpp>
 #include <spdlog/spdlog.h>
+#include <print>
 
 struct MainTestSetup {
     MainTestSetup() {
