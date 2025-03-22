@@ -102,7 +102,7 @@ function(setup_target_properties target)
 
     # Set optimization flags based on build type
     if(CMAKE_BUILD_TYPE STREQUAL "Release")
-        target_compile_options(${target} PRIVATE -O0)  # Adjust as needed
+        target_compile_options(${target} PRIVATE -O3)  # Adjust as needed
     else()
         target_compile_options(${target} PRIVATE -O0)  # Adjust as needed
     endif()
