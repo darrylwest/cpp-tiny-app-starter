@@ -2,13 +2,13 @@
 // dpw
 //
 
-#include <print>
+#include <spdlog/spdlog.h>
 #include <app/tiny.hpp>
 
 int main() {
 
     constexpr auto lang = "c++";
-    std::println("Hello and welcome to {} tiny application, version: {}", lang, app::VERSION);
+    spdlog::info("Hello and welcome to {} tiny application, version: {}", lang, app::VERSION);
 
     return 0;
 }

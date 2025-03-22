@@ -25,11 +25,7 @@ while [[ $# -gt 0 ]]
 do
     case $1 in
         init)
-            [ -d build/_deps/ ] && {
-                mv build/_deps/ . && /bin/rm -fr build && mkdir build && mv _deps/ build/ 
-            } || {
-                mkdir build
-            }
+            [ -d build ] || mkdir build
             (cd build && cmake ..)
 
             shift
@@ -37,7 +33,7 @@ do
         build)
             clear
 
-            (cd build && time make $FLAGS || exit 1)
+            (cd build && time make VERBOSE=1 $FLAGS || exit 1)
 
             shift
         ;;
@@ -48,8 +44,7 @@ do
             shift
         ;;
         run)
-            (cd build && make $FLAGS)
-            $root/build/$project
+            ./build/$project
 
             shift
         ;;

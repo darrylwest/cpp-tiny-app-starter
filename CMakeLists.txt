@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 
-set(CMAKE_CXX_STANDARD 23)
+project(TinyApplication VERSION 1.0.0)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -37,7 +38,7 @@ endif()
 
 # Define source and include directories
 set(SRC_DIR "src")
-# set(INCLUDE_DIR "include")
+set(INCLUDE_DIR "include")
 set(BIN_DIR "build")
 
 # 
@@ -59,8 +60,8 @@ CPMAddPackage(
     VERSION 1.15.0)
 
 find_package(spdlog 1.15.0 REQUIRED)
-# find_package(nlohmann_json 3.2.0 REQUIRED)
-# find_package(Catch2 3 REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
+find_package(Catch2 3 REQUIRED)
 
 # MacOS universal binary setup
 if(APPLE)
@@ -91,18 +92,20 @@ endif()
 set(DEPENDENT_LIBRARIES
     spdlog::spdlog
     Catch2::Catch2WithMain
-#   pthread
-#   nlohmann_json::nlohmann_json
+    pthread
+    nlohmann_json::nlohmann_json
 )
 
 # add the executables
-add_executable(tiny-app main.cpp)
+add_executable(tiny-app 
+    ${SRC_DIR}/main.cpp
+)
 
 message(STATUS "Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
 # turn off optimization to speed compile times
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(OPTIM_COMPILE_FLAGS "-O1")
+    set(OPTIM_COMPILE_FLAGS "-O0")
 else()
     set(OPTIM_COMPILE_FLAGS "-O0")
 endif()
@@ -110,11 +113,11 @@ endif()
 # Configure all targets
 # Create a function for setting up common target properties
 function(setup_target_properties target)
-#   target_include_directories(${target} PRIVATE
-#           ${CMAKE_SOURCE_DIR}/include
-#           ${CMAKE_SOURCE_DIR}/include/vendor
-#   )
-#   target_link_libraries(${target} PRIVATE ${DEPENDENT_LIBRARIES})
+    target_include_directories(${target} PRIVATE
+            ${CMAKE_SOURCE_DIR}/include
+            ${CMAKE_SOURCE_DIR}/include/vendor
+    )
+    target_link_libraries(${target} PRIVATE ${DEPENDENT_LIBRARIES})
 
     target_compile_options(${target} PRIVATE ${OPTIM_COMPILE_FLAGS} -Wall -Wpedantic -Wextra -Werror)
 #
@@ -126,7 +129,7 @@ function(setup_target_properties target)
 endfunction()
 
 # Use the function for each target
-foreach(target starter)
+foreach(target tiny-app)
     setup_target_properties(${target})
 endforeach()
 
