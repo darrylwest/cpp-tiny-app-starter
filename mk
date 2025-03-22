@@ -7,6 +7,7 @@ set -eu
 
 export project=tiny-app
 
+export verbose=''
 export os="$(uname -s)"
 export arch="$(uname -m)"
 
@@ -24,6 +25,11 @@ export arch="$(uname -m)"
 while [[ $# -gt 0 ]]
 do
     case $1 in
+        verbose)
+            verbose='VERBOSE=1'
+
+            shift
+        ;;
         init)
             [ -d build ] || mkdir build
             (cd build && cmake ..)
@@ -33,7 +39,7 @@ do
         build)
             clear
 
-            (cd build && time make VERBOSE=1 $FLAGS || exit 1)
+            (cd build && time make ${verbose} $FLAGS || exit 1)
 
             shift
         ;;
@@ -86,6 +92,7 @@ do
             echo "   pull     : pull the latest repo changes"
             echo "   clean    : remove binary builds but leave the build folder"
             echo "   clobber  : remove the entire build folder"
+            echo "   verbose  : show a verbose build"
             echo "   help     : show this help"
             
             exit 0

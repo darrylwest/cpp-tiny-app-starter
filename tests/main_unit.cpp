@@ -6,12 +6,12 @@
 #include <catch2/catch_all.hpp>
 #include <app/tiny.hpp>
 #include <vendor/ansi_colors.hpp>
-// #include <spdlog/spdlog-inl.h>
+#include <spdlog/spdlog.h>
 
 struct MainTestSetup {
     MainTestSetup() {
         using namespace colors;
-        // spdlog::set_level(spdlog::level::critical);
+        spdlog::set_level(spdlog::level::critical);
 
         // do any config stuff
         // start the perf timer
