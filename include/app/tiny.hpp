@@ -5,5 +5,5 @@
 #pragma once
 
 namespace app {
-    constexpr auto VERSION = "0.1.0";
+    constexpr auto VERSION = "0.1.0-100";
 }
