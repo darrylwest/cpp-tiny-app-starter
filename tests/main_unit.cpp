@@ -8,27 +8,33 @@
 #include <vendor/ansi_colors.hpp>
 #include <spdlog/spdlog.h>
 #include <print>
+#include <vendor/perftimer.hpp>
+
+perftimer::PerfTimer timer("Unit Tests");
 
 struct MainTestSetup {
+
     MainTestSetup() {
         using namespace colors;
         spdlog::set_level(spdlog::level::critical);
 
         // do any config stuff
-        // start the perf timer
+        timer.start();
     }
 
     ~MainTestSetup() {
         using namespace colors;
-        std::println("{} Tests complete...{}", bright::cyan, colors::reset);
+        timer.stop();
+        std::println("{}Tests complete...{}", bright::cyan, colors::reset);
+        timer.show_duration();
     }
 };
 
 // put helpers here...
+MainTestSetup setup;
 
 // Tests here
 TEST_CASE("Version test", "[version]") {
-
     const auto vers = app::VERSION;
     REQUIRE(vers == app::VERSION);
 }
