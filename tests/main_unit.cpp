@@ -10,7 +10,7 @@
 #include <print>
 #include <vendor/perftimer.hpp>
 
-perftimer::PerfTimer timer("Unit Tests");
+perftimer::PerfTimer timer("Catch2 Unit Tests");
 
 struct MainTestSetup {
 
@@ -20,6 +20,7 @@ struct MainTestSetup {
 
         // do any config stuff
         timer.start();
+        // timer.log << "started";
     }
 
     ~MainTestSetup() {
@@ -27,6 +28,7 @@ struct MainTestSetup {
         timer.stop();
         std::println("{}Tests complete...{}", bright::cyan, colors::reset);
         timer.show_duration();
+        // std::println("{}", timer.log.str());
     }
 };
 

@@ -32,16 +32,19 @@ namespace perftimer {
         PerfTimer(const std::string timer_name) : name(timer_name) { };
 
         // log messages in a buffered way to delay console log delays. use like cout << "message"
+        // use log.str() to read the contents. 
+        // @see https://en.cppreference.com/w/cpp/io/basic_ostringstream
         std::ostringstream log;
 
         // set the show precision, defaults to 9 places
         int prec = 9;
 
-        // start or re-start the timer; invoke end to capture the duration
+        // start or re-start the timer and set t0
         void start() {
             t0 = Clock::now();
         }
 
+        // stop the clock and set t1
         void stop() {
             t1 = Clock::now();
         }
@@ -53,7 +56,7 @@ namespace perftimer {
             return dur;
         }
 
-        // show the duration
+        // show the timer name, a message and the duration between t0 and t1
         void show_duration(const std::string& message = ": process took: ") {
             auto dur = get_duration();
             if (dur.count() > billions) {
