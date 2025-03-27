@@ -7,6 +7,9 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
 
+include_directories(/usr/local/include)
+link_directories(/usr/local/lib)
+
 # Validate build type
 set(ALLOWED_BUILD_TYPES Debug Release RelWithDebInfo MinSizeRel)
 if(NOT CMAKE_BUILD_TYPE IN_LIST ALLOWED_BUILD_TYPES)
@@ -78,6 +81,8 @@ set(DEPENDENT_LIBRARIES
         Catch2::Catch2WithMain
         pthread
         nlohmann_json::nlohmann_json
+        domainkeys
+        quickkv
 )
 
 # Add executables
