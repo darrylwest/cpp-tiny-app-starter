@@ -46,10 +46,4 @@ tiny-app
 * change include path to real name
 * remove / replace `.git` and do a `git init`
 
-## Alternate Use
-
-
-* create target branches for new starter projects
-* work on the target branch until it's ready to move (if ever)
-
-###### 2025.03.22 | dpw
+###### 2025.03.27 | dpw
