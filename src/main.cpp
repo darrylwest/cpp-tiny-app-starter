@@ -5,12 +5,14 @@
 #include <spdlog/spdlog.h>
 
 #include <app/tiny.hpp>
+#include <app/version.hpp>
 #include <domainkeys/keys.hpp>
 #include <quickkv/quickkv.hpp>
 
 int main() {
+    const auto vers = app::Version();
     constexpr auto lang = "c++";
-    spdlog::info("Hello and welcome to {} tiny application, version: {}", lang, app::VERSION);
+    spdlog::info("Hello and welcome to {} tiny application, version: {}", lang, vers.to_string());
 
     // create the k/v store
     quickkv::KVStore store;

@@ -5,6 +5,7 @@
 
 #include <catch2/catch_all.hpp>
 #include <app/tiny.hpp>
+#include <app/version.hpp>
 #include <vendor/ansi_colors.hpp>
 #include <spdlog/spdlog.h>
 #include <print>
@@ -37,6 +38,10 @@ MainTestSetup setup;
 
 // Tests here
 TEST_CASE("Version test", "[version]") {
-    const auto vers = app::VERSION;
-    REQUIRE(vers == app::VERSION);
+    const auto vers = app::Version();
+    REQUIRE(vers.major == 0);
+    REQUIRE(vers.minor == 1);
+    REQUIRE(vers.patch == 1);
+    REQUIRE(vers.build >= 100);
+    REQUIRE(vers.to_string().starts_with("0.1.1"));
 }
