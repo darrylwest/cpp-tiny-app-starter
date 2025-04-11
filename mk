@@ -30,6 +30,11 @@ do
 
             shift
         ;;
+        all)
+            ./mk clobber init build unit
+
+            exit 0
+        ;;
         init)
             [ -d build ] || mkdir build
             (cd build && cmake ..)
@@ -92,6 +97,7 @@ do
             echo "   pull     : pull the latest repo changes"
             echo "   clean    : remove binary builds but leave the build folder"
             echo "   clobber  : remove the entire build folder"
+            echo "   all      : special target to clobber init build unit"
             echo "   verbose  : show a verbose build"
             echo "   help     : show this help"
             
