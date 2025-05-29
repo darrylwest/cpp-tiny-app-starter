@@ -56,6 +56,13 @@ CPMAddPackage(
 find_package(nlohmann_json 3.2.0 REQUIRED)
 find_package(Catch2 3 REQUIRED)
 
+find_library(TERMIO_LIBRARY NAMES termio PATHS /usr/local/lib)
+find_path(TERMIO_INCLUDE_DIR NAMES termio/termio.hpp PATHS /usr/local/include)
+
+if(NOT TERMIO_LIBRARY OR NOT TERMIO_INCLUDE_DIR)
+    message(FATAL_ERROR "termio not found")
+endif()
+
 # MacOS universal binary setup
 if(APPLE)
     execute_process(
@@ -83,6 +90,7 @@ set(DEPENDENT_LIBRARIES
         nlohmann_json::nlohmann_json
         domainkeys
         quickkv
+        ${TERMIO_LIBRARY}
 )
 
 # Add executables

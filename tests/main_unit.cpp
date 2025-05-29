@@ -10,13 +10,13 @@
 #include <spdlog/spdlog.h>
 #include <print>
 #include <vendor/perftimer.hpp>
+#include <termio/termio.hpp>
 
 perftimer::PerfTimer timer("Catch2 Unit Tests");
 
 struct MainTestSetup {
 
     MainTestSetup() {
-        using namespace colors;
         spdlog::set_level(spdlog::level::critical);
 
         // do any config stuff
@@ -25,9 +25,9 @@ struct MainTestSetup {
     }
 
     ~MainTestSetup() {
-        using namespace colors;
+        using namespace termio::termio;
         timer.stop();
-        std::println("{}Tests complete...{}", bright::cyan, colors::reset);
+        std::println("{}Tests complete...{}", cyan(), reset());
         timer.show_duration();
         // std::println("{}", timer.log.str());
     }
