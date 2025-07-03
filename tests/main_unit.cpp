@@ -5,7 +5,6 @@
 
 #include <catch2/catch_all.hpp>
 #include <app/tiny.hpp>
-#include <vendor/ansi_colors.hpp>
 #include <spdlog/spdlog.h>
 #include <print>
 #include <vendor/perftimer.hpp>
