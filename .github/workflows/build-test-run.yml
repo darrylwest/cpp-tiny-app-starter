@@ -63,9 +63,9 @@ jobs:
     - name: Run tests
       run: |
         echo "=== Running unit tests ==="
-        ${{github.workspace}}/build/unit_tests
+        ./build/unit_tests
 
     - name: Run
       run: |
         echo "=== Running tiny-app ==="
-        ${{github.workspace}}/build/tiny-app
+        ./build/tiny-app
