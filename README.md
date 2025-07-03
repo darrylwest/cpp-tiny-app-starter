@@ -19,8 +19,9 @@ Minimal application startup.
  
 ## Includes
 
-* spdlog
-* Catch2
+* spdlog - logging
+* Catch2 - testing
+* cpp-termio - terminal colors
 
 ## File Structure
 
@@ -54,7 +55,5 @@ There is also a GEMINI.md file with minimal rules.
 * develop - the most basic startup with spdlog, catch2, nlohmann json, threads
 * kvstore - adds support for quickkv and domainkeys for an in-memory k/v store
 
-###### dpw | 2025-07-03
+###### dpw | 2025-07-03 | 81MzL7oHYRG9
 
-<!-- txkey for last update -->
-<p style="font-size: 5px;">81MzL7oHYRG9</p>
