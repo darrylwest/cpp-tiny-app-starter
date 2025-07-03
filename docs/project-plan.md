@@ -1,13 +1,18 @@
 # Project Plan
 
-_Start with an overview, elivator pitch_
+_Start with an overview, elivator pitch._
 
 ## Plan
 
-* _work with AI to describe the progect in detail_
-* _work out functional specs, user stories_
-* _specify tech stack, dependencies_
-* _crate a development plan with github issues_
+1. work with AI to describe the progect in detail
+2. work out functional specs, user stories
+3. specify tech stack, dependencies
+4. crate a development plan
+    * github issues
+    * dependencies
+    * testing
+    * workflow CI/CD
+    * security
 
 ###### dpw | 2025-07-03
 
