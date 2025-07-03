@@ -29,7 +29,8 @@ do
             shift
         ;;
         all)
-            ./mk clobber init build unit
+            ./mk pull 
+            ./mk clobber init test run
 
             exit 0
         ;;
@@ -47,7 +48,7 @@ do
             shift
         ;;
         unit|test)
-            # (cd build && time make $FLAGS)
+            (cd build && time make $FLAGS)
             ./build/unit_tests
 
             shift

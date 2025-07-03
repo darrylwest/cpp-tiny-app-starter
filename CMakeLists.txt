@@ -57,8 +57,15 @@ CPMAddPackage(
 )
 message(STATUS "cpp-termio library loaded")
 
-find_package(nlohmann_json 3.2.0 REQUIRED)
-find_package(Catch2 3 REQUIRED)
+CPMAddPackage(
+        NAME nlohmann_json
+        GITHUB_REPOSITORY nlohmann/json
+        VERSION 3.11.3)
+
+CPMAddPackage(
+        NAME Catch2
+        GITHUB_REPOSITORY CatchOrg/Catch2
+        VERSION 3.6.0)
 
 # MacOS universal binary setup
 if(APPLE)
