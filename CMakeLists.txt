@@ -54,6 +54,7 @@ CPMAddPackage(
         NAME termio
         GITHUB_REPOSITORY darrylwest/cpp-termio
         GIT_TAG main
+        OPTIONS "BUILD_TESTING OFF"
 )
 message(STATUS "cpp-termio library loaded")
 
