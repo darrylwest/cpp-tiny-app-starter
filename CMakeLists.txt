@@ -50,6 +50,13 @@ CPMAddPackage(
         GITHUB_REPOSITORY gabime/spdlog
         VERSION 1.15.0)
 
+CPMAddPackage(
+        NAME termio
+        GITHUB_REPOSITORY darrylwest/cpp-termio
+        GIT_TAG main
+)
+message(STATUS "cpp-termio library loaded")
+
 find_package(nlohmann_json 3.2.0 REQUIRED)
 find_package(Catch2 3 REQUIRED)
 
@@ -78,6 +85,7 @@ set(DEPENDENT_LIBRARIES
         Catch2::Catch2WithMain
         pthread
         nlohmann_json::nlohmann_json
+        termio
 )
 
 # Add executables
