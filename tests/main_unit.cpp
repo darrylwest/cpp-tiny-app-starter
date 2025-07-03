@@ -37,6 +37,6 @@ MainTestSetup setup;
 
 // Tests here
 TEST_CASE("Version test", "[version]") {
-    const auto vers = app::VERSION;
-    REQUIRE(vers == app::VERSION);
+    const auto vers = app::tiny::VERSION;
+    REQUIRE(vers == app::tiny::VERSION);
 }

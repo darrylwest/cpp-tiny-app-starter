@@ -12,9 +12,10 @@ Minimal application startup.
 
 ## Features
 
-* cmake 3.30
+* cmake 3.30.0
 * c++23
-* osx, linux
+* osx clang-17.0
+* linux gcc-14.2.0
  
 ## Includes
 
@@ -30,8 +31,9 @@ tiny-app
     ├── app
     │   └── tiny.hpp
     └── vendor
-    ├── ansi_colors.hpp
-    └── cxxopts.hpp
+        ├── ansi_colors.hpp
+        └── cxxopts.hpp
+        └── perftimer.hpp
   └─src
     └── main.cpp
   └─tests
@@ -49,4 +51,7 @@ tiny-app
 * develop - the most basic startup with spdlog, catch2, nlohmann json, threads
 * kvstore - adds support for quickkv and domainkeys for an in-memory k/v store
 
-###### 2025.03.27 | dpw
+###### dpw | 2025-07-03
+
+<!-- txkey for last update -->
+<p style="font-size: 5px;">81MzL7oHYRG9</p>
