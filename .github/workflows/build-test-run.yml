@@ -32,12 +32,23 @@ jobs:
         g++ --version
         cmake --version
 
+    - name: Install Catch2
+      run: |
+        git clone https://github.com/catchorg/Catch2.git
+        cd Catch2
+        git checkout v3.7.1
+        cmake -B build -S . -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/local
+        cmake --build build --parallel $(nproc)
+        cmake --build build --target install
+        cd ..
+
     - name: Configure CMake
       run: |
         cmake -B build \
           -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
           -DCMAKE_CXX_STANDARD=23 \
-          -G Ninja
+          -G Ninja \
+          -DCMAKE_PREFIX_PATH=/usr/local
 
     - name: Show Versions
       run: |

@@ -51,12 +51,9 @@ CPMAddPackage(
         VERSION 1.15.0)
 
 CPMAddPackage(
-        NAME termio
-        GITHUB_REPOSITORY darrylwest/cpp-termio
-        GIT_TAG main
-        OPTIONS "BUILD_TESTING OFF"
-)
-message(STATUS "cpp-termio library loaded")
+        NAME Catch2
+        GITHUB_REPOSITORY CatchOrg/Catch2
+        VERSION 3.6.0)
 
 CPMAddPackage(
         NAME nlohmann_json
@@ -64,9 +61,12 @@ CPMAddPackage(
         VERSION 3.11.3)
 
 CPMAddPackage(
-        NAME Catch2
-        GITHUB_REPOSITORY CatchOrg/Catch2
-        VERSION 3.6.0)
+        NAME termio
+        GITHUB_REPOSITORY darrylwest/cpp-termio
+        GIT_TAG main
+        CMAKE_ARGS "-DBUILD_TESTING=OFF"
+)
+message(STATUS "cpp-termio library loaded")
 
 # MacOS universal binary setup
 if(APPLE)
