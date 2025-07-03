@@ -7,14 +7,15 @@
 #include <app/tiny.hpp>
 #include <spdlog/spdlog.h>
 #include <print>
+#include <termio/termio.hpp>
 #include <vendor/perftimer.hpp>
 
 perftimer::PerfTimer timer("Catch2 Unit Tests");
+using namespace termio::termio;
 
 struct MainTestSetup {
 
     MainTestSetup() {
-        using namespace colors;
         spdlog::set_level(spdlog::level::critical);
 
         // do any config stuff
@@ -23,9 +24,8 @@ struct MainTestSetup {
     }
 
     ~MainTestSetup() {
-        using namespace colors;
         timer.stop();
-        std::println("{}Tests complete...{}", bright::cyan, colors::reset);
+        std::println("{}Tests complete...{}", green(), reset());
         timer.show_duration();
         // std::println("{}", timer.log.str());
     }

@@ -5,6 +5,7 @@
 #include <spdlog/spdlog.h>
 #include <app/tiny.hpp>
 #include <string>
+#include <termio/termio.hpp>
 #include <print>
 
 constexpr std::string_view BANNER = R"(
@@ -16,8 +17,9 @@ constexpr std::string_view BANNER = R"(
 )";
 
 int main() {
+    using namespace termio::termio;
 
-    std::println("{}\nVersion: {}", BANNER, app::tiny::VERSION);
+    std::println("{}{}\n{}Version: {}{}", green(), BANNER, yellow(), app::tiny::VERSION, reset());
     constexpr auto lang = "c++";
     spdlog::info("Hello and welcome to {} tiny application, version: {}", lang, app::tiny::VERSION);
 
