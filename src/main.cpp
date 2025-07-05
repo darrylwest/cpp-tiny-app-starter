@@ -3,10 +3,11 @@
 //
 
 #include <spdlog/spdlog.h>
+
 #include <app/tiny.hpp>
+#include <print>
 #include <string>
 #include <termio/termio.hpp>
-#include <print>
 
 constexpr std::string_view BANNER = R"(
  _______ __                _______ __               __                _______
@@ -25,4 +26,3 @@ int main() {
 
     return 0;
 }
-
