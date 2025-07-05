@@ -3,19 +3,19 @@
 //
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() function
 
-#include <catch2/catch_all.hpp>
+#include <spdlog/spdlog.h>
+
 #include <app/tiny.hpp>
 #include <app/version.hpp>
-#include <vendor/ansi_colors.hpp>
-#include <spdlog/spdlog.h>
+#include <catch2/catch_all.hpp>
 #include <print>
-#include <vendor/perftimer.hpp>
 #include <termio/termio.hpp>
+#include <vendor/ansi_colors.hpp>
+#include <vendor/perftimer.hpp>
 
 perftimer::PerfTimer timer("Catch2 Unit Tests");
 
 struct MainTestSetup {
-
     MainTestSetup() {
         spdlog::set_level(spdlog::level::critical);
 
